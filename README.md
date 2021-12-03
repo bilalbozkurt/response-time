@@ -27,5 +27,3 @@ Average     0.220409 s
 ### FAQ
 - What is time unit?
   - Seconds. `response.elapsed.total_seconds()` 
-- What happens if timeout occur?
-  - Throws an exception and exit. Timeout exception is not added yet.
