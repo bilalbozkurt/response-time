@@ -2,7 +2,7 @@
 Measure Web Server Response Time (Latency)
 
 ### Usage
-`python latency.py [URL] [NUMBER_OF_TRIES]`
+`python latency.py [URL] [NUMBER_OF_ATTEMPTS]`
 
 ### Output
 

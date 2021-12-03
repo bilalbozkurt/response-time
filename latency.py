@@ -4,12 +4,12 @@ from requests.models import ReadTimeoutError
 
 try:
     url = sys.argv[1]
-    tries = int(sys.argv[2])
+    attempts = int(sys.argv[2])
     timeout = 50
     total_time = 0
     max_time = -1
     min_time = sys.maxsize
-    for i in range(0, tries):
+    for i in range(0, attempts):
         response = requests.get(url, timeout=timeout)
         total_time += response.elapsed.total_seconds()
         if response.elapsed.total_seconds() < min_time:
@@ -25,7 +25,7 @@ try:
     print('{:10}{:10f}{:10}'.format(
         'Max', max_time, ' s'))
     print('{:10}{:10f}{:10}'.format(
-        'Average', total_time/tries, ' s'))
+        'Average', total_time/attempts, ' s'))
 except IndexError:
-    print('Usage: latency.py URL Number_Of_Tries')
+    print('Usage: latency.py URL Number_Of_Attempts')
     exit(0)
