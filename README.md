@@ -6,7 +6,8 @@ Measure Web Server Response Time (Latency)
 
 ### Output
 
-```$ python latency.py https://github.com 10
+```
+$ python latency.py https://github.com 10
          1  0.294950 s        
          2  0.210936 s        
          3  0.200345 s        
