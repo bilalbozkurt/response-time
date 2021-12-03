@@ -1,6 +1,6 @@
 import sys
 import requests
-from requests.models import ReadTimeoutError
+from requests.models import MissingSchema, ReadTimeoutError
 from requests.packages.urllib3.exceptions import ConnectTimeoutError, MaxRetryError
 
 url = sys.argv[1]
@@ -32,6 +32,12 @@ for i in range(0, attempts):
     except MaxRetryError:
         print('{:12d}{:10}'.format(i+1, '  Timeout'))
         pass
+    except MissingSchema:
+        print('Do not forget http:// or https://.')
+        exit(0)
+    except KeyboardInterrupt:
+        break
+    
 print('{:10}'.format(
     'Results'))
 print('{:10}{:10f}{:10}'.format(
