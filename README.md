@@ -47,12 +47,18 @@ Status 200 occured 5 times.
 ```
 
 ### FAQ
-- What is time unit?
-  - Seconds. `response.elapsed.total_seconds()` 
+- What is measurement unit?
+    - Seconds. `response.elapsed.total_seconds()` 
 - Can I measure latency for http:// hosts?
   - Yes. Just specify it. If you do **NOT** specify, this script will assume it is **https://**.
     - ```$ python latency.py github.com 10``` -> Will try connect **https**.
     - ```$ python latency.py https://github.com 10``` -> Will try connect **https**.
     - ```$ python latency.py http://github.com 10``` -> Will try to connect **http**.
+- What are local host details?
+  - They are your local connection details such as ISP, country, city etc.
+- What is ```http://ip-api.com/json/```?
+  - Actually I have **not** done a deep research about it but it basically returns geo informations of given ip address.
+- How does this script know my own IP address?
+  - It does **not**. ```http://ip-api.com/json/``` returns your own geo details if no IP address is given.
 
   
