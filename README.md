@@ -7,21 +7,24 @@ Measure Web Server Response Time (Latency)
 ### Output
 
 ```
-$ python latency.py https://github.com 10
-         1  0.294950 s        
-         2  0.210936 s        
-         3  0.200345 s        
-         4  0.225527 s        
-         5  0.228740 s        
-         6  0.231548 s        
-         7  0.199812 s        
-         8  0.196749 s        
-         9  0.206949 s        
-        10  0.208530 s        
-Results   
-Min         0.196749 s
-Max         0.294950 s
-Average     0.220409 s
+$ python latency.py stackoverflow.com 10
+Given host address: https://stackoverflow.com
+Host: https://stackoverflow.com
+Connected to host at 151.101.65.69:443
+           1     0.4353 s [200]
+           2     0.3629 s [200]
+           3     0.3397 s [200]
+           4     0.3371 s [200]
+           5     0.3436 s [200]
+           6      0.351 s [200]
+           7     0.3358 s [200]
+           8     0.3328 s [200]
+           9     0.3376 s [200]
+          10     0.3472 s [200]
+Results
+Min            0.3328 s
+Max            0.4353 s
+Average        0.3523 s
 ```
 
 ### FAQ
