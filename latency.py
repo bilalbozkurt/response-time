@@ -75,7 +75,7 @@ try:
     print(f'{"Average":>{10}}  {totalTime / attempts:<{8.4}} {"s":{3}}\n')
     countedStatusCodeList = Counter(statusCodesList)
     for statusCode in countedStatusCodeList.keys():
-        print(f'{statusCode} occured {countedStatusCodeList[statusCode]} times.')
+        print(f'Status {statusCode} occured {countedStatusCodeList[statusCode]} times.')
 
 
 except IndexError:

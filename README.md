@@ -6,24 +6,33 @@ Measure Web Server Response Time (Latency)
 
 ### Output
 ```
-$ python latency.py stackoverflow.com 10
-Given host address: https://stackoverflow.com
-Host: https://stackoverflow.com
-Connected to host at 151.101.65.69:443
-           1     0.4353 s [200]
-           2     0.3629 s [200]
-           3     0.3397 s [200]
-           4     0.3371 s [200]
-           5     0.3436 s [200]
-           6      0.351 s [200]
-           7     0.3358 s [200]
-           8     0.3328 s [200]
-           9     0.3376 s [200]
-          10     0.3472 s [200]
+$ python latency.py github.com 5
+
+Given host address: https://github.com
+
+Connected to https://github.com at 140.82.121.4:443
+
+Host Details
+Country      : Germany
+City         : Hesse
+Timezone     : Europe/Berlin
+ISP          : GitHub, Inc.
+Organization : GitHub, Inc.
+Latitude     : 50.1109
+Longitude    : 8.68213
+
+         1  0.2117   s [200]
+         2  0.205    s [200]
+         3  0.2166   s [200]
+         4  0.2378   s [200]
+         5  0.2176   s [200]
+
 Results
-Min            0.3328 s
-Max            0.4353 s
-Average        0.3523 s
+       Min  0.205    s
+       Max  0.2378   s
+   Average  0.2177   s
+
+Status 200 occured 5 times.
 ```
 
 ### FAQ
