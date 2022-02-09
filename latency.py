@@ -105,7 +105,6 @@ try:
         except KeyboardInterrupt:
             break
 
-    # print('{:10}'.format('Results'))
     print(f'\n{"Results":{10}}')
     print(f'{"Min":>{10}}  {minTime:<{8.4}} {"s":{3}}')
     print(f'{"Max":>{10}}  {maxTime:<{8.4}} {"s":{3}}')
