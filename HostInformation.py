@@ -57,12 +57,13 @@ class HostInformation():
         return response
 
     def SetHostInformation(self):
-        response = self.MakeRequest(self.Host)
-        if response == None:
-            return -1
-
-        self.IPAddress = response.raw._original_response.peer[0]
-        self.Port = response.raw._original_response.peer[1]
+        if self.Host != None:
+            response = self.MakeRequest(self.Host)
+            if response == None:
+                return -1
+            else:
+                self.IPAddress = response.raw._original_response.peer[0]
+                self.Port = response.raw._original_response.peer[1]
 
         geoInfoResponse = self.MakeRequest("http://ip-api.com/json/" + self.IPAddress)  # has no relation with owner of this code. Please implement this line as your own responsibility
         if geoInfoResponse == None:
@@ -76,3 +77,5 @@ class HostInformation():
         self.ISP = jsonResponse["isp"]
         self.Organization = jsonResponse["org"]
         return 1
+    
+    

@@ -6,8 +6,30 @@ from HostInformation import HostInformation
 from requests.packages.urllib3.exceptions import ConnectTimeoutError, MaxRetryError
 from collections import Counter
 
+from math import sin, cos, sqrt, atan2, radians
+
+
+def CalculateDistance(latitude1, longitude1, latitude2, longitude2):
+    # approximate radius of earth in km
+    R = 6373.0
+
+    lat1 = radians(latitude1)
+    lon1 = radians(longitude1)
+    lat2 = radians(latitude2)
+    lon2 = radians(longitude2)
+
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+
+    a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+    c = 2 * atan2(sqrt(a), sqrt(1 - a))
+
+    distance = R * c
+    return distance
+
+
 try:
-    verifySslStatus = False #edit if you want to.
+    verifySslStatus = False  # edit if you want to.
     url = sys.argv[1]
     attempts = int(sys.argv[2])
     timeout = 5
@@ -20,20 +42,35 @@ try:
         url = "https://" + url
 
     print(f"\nGiven host address: {url}\n")
-    hostInformation = HostInformation(url, timeout)
-    if hostInformation.SetHostInformation() == -1:
+    remoteHostInformation = HostInformation(url, timeout)
+    if remoteHostInformation.SetHostInformation() == -1:
+        exit(0)
+    localHostInformation = HostInformation(None, timeout)
+    if localHostInformation.SetHostInformation() == -1:
         exit(0)
 
-    print(f'Connected to {hostInformation.Host} at {hostInformation.IPAddress}:{hostInformation.Port}\n')
+    print(f'Connected to {remoteHostInformation.Host} at {remoteHostInformation.IPAddress}:{remoteHostInformation.Port}\n')
 
-    print(f'Host Details')
-    print(f'{"Country":{13}}: {hostInformation.Country:{30}}')
-    print(f'{"City":{13}}: {hostInformation.City:{30}}')
-    print(f'{"Timezone":{13}}: {hostInformation.Timezone:{30}}')
-    print(f'{"ISP":{13}}: {hostInformation.ISP:{30}}')
-    print(f'{"Organization":{13}}: {hostInformation.Organization:{30}}')
-    print(f'{"Latitude":{13}}: {hostInformation.Latitude:<{30}}')
-    print(f'{"Longitude":{13}}: {hostInformation.Longitude:<{30}}\n')
+    print(f'Remote Host Details')
+    print(f'{"Country":{13}}: {remoteHostInformation.Country:{30}}')
+    print(f'{"City":{13}}: {remoteHostInformation.City:{30}}')
+    print(f'{"Timezone":{13}}: {remoteHostInformation.Timezone:{30}}')
+    print(f'{"ISP":{13}}: {remoteHostInformation.ISP:{30}}')
+    print(f'{"Organization":{13}}: {remoteHostInformation.Organization:{30}}')
+    print(f'{"Latitude":{13}}: {remoteHostInformation.Latitude:<{30}}')
+    print(f'{"Longitude":{13}}: {remoteHostInformation.Longitude:<{30}}\n')
+
+    print(f'Local Host Details')
+    print(f'{"Country":{13}}: {localHostInformation.Country:{30}}')
+    print(f'{"City":{13}}: {localHostInformation.City:{30}}')
+    print(f'{"Timezone":{13}}: {localHostInformation.Timezone:{30}}')
+    print(f'{"ISP":{13}}: {localHostInformation.ISP:{30}}')
+    print(f'{"Organization":{13}}: {localHostInformation.Organization:{30}}')
+    print(f'{"Latitude":{13}}: {localHostInformation.Latitude:<{30}}')
+    print(f'{"Longitude":{13}}: {localHostInformation.Longitude:<{30}}\n')
+
+    distance = CalculateDistance(remoteHostInformation.Latitude, remoteHostInformation.Longitude, localHostInformation.Latitude, localHostInformation.Longitude)
+    print(f'Distance between two hostes is approximately {distance:.1f} km.\n')
 
     for i in range(0, attempts):
         try:
