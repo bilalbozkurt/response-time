@@ -5,7 +5,6 @@ Measure Web Server Response Time (Latency)
 `python latency.py [URL] [NUMBER_OF_ATTEMPTS]`
 
 ### Output
-
 ```
 $ python latency.py stackoverflow.com 10
 Given host address: https://stackoverflow.com
@@ -30,3 +29,10 @@ Average        0.3523 s
 ### FAQ
 - What is time unit?
   - Seconds. `response.elapsed.total_seconds()` 
+- Can I measure latency for http:// hosts?
+  - Yes. Just specify it. If you do **NOT** specify, this script will assume it is **https://**.
+  ```$ python latency.py stackoverflow.com 10``` -> Will try connect **https**.
+  ```$ python latency.py https://stackoverflow.com 10``` -> Will try connect **https**.
+  ```$ python latency.py http://stackoverflow.com 10``` -> Will try to connect **http**.
+
+  
