@@ -67,3 +67,6 @@ Status 200 occured 5 times.
   - It does **not**. ```http://ip-api.com/json/``` returns your own geo details if no IP address is given.
 
   
+### To Do
+- I plan to add IP address support for hosts with no domain.
+- Suggestions are welcomed.
