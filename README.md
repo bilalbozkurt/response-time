@@ -7,11 +7,11 @@ response-time measures latency of a web server with your own connection. It also
 - etc.
 
 ### Usage
-`python latency.py [URL] [NUMBER_OF_ATTEMPTS]`
+`python rtime.py [URL] [NUMBER_OF_ATTEMPTS]`
 
 ### Output
 ```
-$ python latency.py github.com 5
+$ python rtime.py github.com 5
 
 Given host address: https://github.com
 
@@ -56,9 +56,9 @@ Status 200 occured 5 times.
     - Seconds. `response.elapsed.total_seconds()` 
 - Can I measure latency for http:// hosts?
   - Yes. Just specify it. If you do **NOT** specify, this script will assume it is **https://**.
-    - ```$ python latency.py github.com 10``` -> Will try connect **https**.
-    - ```$ python latency.py https://github.com 10``` -> Will try connect **https**.
-    - ```$ python latency.py http://github.com 10``` -> Will try to connect **http**.
+    - ```$ python rtime.py github.com 10``` -> Will try connect **https**.
+    - ```$ python rtime.py https://github.com 10``` -> Will try connect **https**.
+    - ```$ python rtime.py http://github.com 10``` -> Will try to connect **http**.
 - What are local host details?
   - They are your local connection details such as ISP, country, city etc.
 - What is ```http://ip-api.com/json/```?
