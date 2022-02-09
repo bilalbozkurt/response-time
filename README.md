@@ -1,5 +1,10 @@
 # response-time
-Measure Web Server Response Time (Latency)
+**Measure Web Server Response Time (Latency)**
+response-time measures latency of a web server with your own connection. It also includes distance in km of you and remote host.
+### Use Cases
+- Checking web applications latency.
+- Checking API's response time.
+- etc.
 
 ### Usage
 `python latency.py [URL] [NUMBER_OF_ATTEMPTS]`
