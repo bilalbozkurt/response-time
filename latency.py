@@ -19,14 +19,13 @@ HTTPConnectionPool._old_make_request = HTTPConnectionPool._make_request
 HTTPConnectionPool._make_request = _make_request
 
 try:
-
     url = sys.argv[1]
     attempts = int(sys.argv[2])
     timeout = 3
-    total_time = 0
-    max_time = -1
-    min_time = sys.maxsize
-    print_host_info = True
+    totalTime = 0
+    maxTime = -1
+    minTime = sys.maxsize
+    printHostInfo = True
     if url[:7] != "http://" and url[:8] != "https://":        
         url = "https://" + url
         
@@ -35,17 +34,17 @@ try:
     for i in range(0, attempts):
         try:
             response = requests.get(url, timeout=timeout)
-            if print_host_info:
+            if printHostInfo:
                 print(f'Host: {url}')
                 print(f'Connected to host at {response.raw._original_response.peer[0]}:{response.raw._original_response.peer[1]}')
-                print_host_info = False
+                printHostInfo = False
 
-            total_time += response.elapsed.total_seconds()
-            if (response.elapsed.total_seconds() < min_time):
-                min_time = response.elapsed.total_seconds()
+            totalTime += response.elapsed.total_seconds()
+            if (response.elapsed.total_seconds() < minTime):
+                minTime = response.elapsed.total_seconds()
 
-            if (response.elapsed.total_seconds() > max_time):
-                max_time = response.elapsed.total_seconds()
+            if (response.elapsed.total_seconds() > maxTime):
+                maxTime = response.elapsed.total_seconds()
 
             print(f'{i+1:{12}} {response.elapsed.total_seconds():>{10.4}} s [{response.status_code}]')
 
@@ -69,9 +68,9 @@ try:
 
     # print('{:10}'.format('Results'))
     print(f'{"Results":{10}}')
-    print(f'{"Min":{10}} {min_time:{10.4}} {"s":{3}}')
-    print(f'{"Max":{10}} {max_time:{10.4}} {"s":{3}}')
-    print(f'{"Average":{10}} {total_time / attempts:{10.4}} {"s":{3}}')
+    print(f'{"Min":{10}} {minTime:{10.4}} {"s":{3}}')
+    print(f'{"Max":{10}} {maxTime:{10.4}} {"s":{3}}')
+    print(f'{"Average":{10}} {totalTime / attempts:{10.4}} {"s":{3}}')
 
 except IndexError:
     print('Usage: latency.py URL Number_Of_Attempts')
