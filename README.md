@@ -10,9 +10,9 @@ $ python latency.py github.com 5
 
 Given host address: https://github.com
 
-Connected to https://github.com at 140.82.121.4:443
+Connected to https://github.com at 140.82.121.3:443
 
-Host Details
+Remote Host Details
 Country      : Germany
 City         : Hesse
 Timezone     : Europe/Berlin
@@ -21,16 +21,27 @@ Organization : GitHub, Inc.
 Latitude     : 50.1109
 Longitude    : 8.68213
 
-         1  0.2117   s [200]
-         2  0.205    s [200]
-         3  0.2166   s [200]
-         4  0.2378   s [200]
-         5  0.2176   s [200]
+Local Host Details
+Country      : Turkey
+City         : ***
+Timezone     : Europe/Istanbul
+ISP          : ***
+Organization : ***
+Latitude     : ***
+Longitude    : ***
+
+Distance between two hostes is approximately 2553.3 km.
+
+         1  0.2121   s [200]
+         2  0.1873   s [200]
+         3  0.1925   s [200]
+         4  0.1911   s [200]
+         5  0.1936   s [200]
 
 Results
-       Min  0.205    s
-       Max  0.2378   s
-   Average  0.2177   s
+       Min  0.1873   s
+       Max  0.2121   s
+   Average  0.1953   s
 
 Status 200 occured 5 times.
 ```
@@ -40,8 +51,8 @@ Status 200 occured 5 times.
   - Seconds. `response.elapsed.total_seconds()` 
 - Can I measure latency for http:// hosts?
   - Yes. Just specify it. If you do **NOT** specify, this script will assume it is **https://**.
-    - ```$ python latency.py stackoverflow.com 10``` -> Will try connect **https**.
-    - ```$ python latency.py https://stackoverflow.com 10``` -> Will try connect **https**.
-    - ```$ python latency.py http://stackoverflow.com 10``` -> Will try to connect **http**.
+    - ```$ python latency.py github.com 10``` -> Will try connect **https**.
+    - ```$ python latency.py https://github.com 10``` -> Will try connect **https**.
+    - ```$ python latency.py http://github.com 10``` -> Will try to connect **http**.
 
   
